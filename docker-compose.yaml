@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+
+  slave_1:
+    image: centos:7
+    tty: true
+    ports:
+      - "123"
+    networks:
+      local:
+        ipv4_address: 10.6.0.6
+
+  slave_2:
+    image: centos:7
+    tty: true
+    ports:
+      - "123"
+    networks:
+      local:
+        ipv4_address: 10.6.0.7
+    
+  master:
+    image: centos:7
+    tty: true
+    ports:
+      - "123"
+    networks:
+      local:
+        ipv4_address: 10.6.0.5
+    volumes:
+      - type: bind
+        source: ./src
+        target: /sandbox/src
+
+networks:
+  local:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.6.0.0/16
+
