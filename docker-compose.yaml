@@ -5,6 +5,7 @@ services:
   slave_1:
     image: centos:7
     tty: true
+    hostname: slave1.local.com
     ports:
       - "123"
     networks:
@@ -14,6 +15,7 @@ services:
   slave_2:
     image: centos:7
     tty: true
+    hostname: slave2.local.com
     ports:
       - "123"
     networks:
@@ -23,6 +25,7 @@ services:
   master:
     image: centos:7
     tty: true
+    hostname: master.local.com
     ports:
       - "123"
     networks:
